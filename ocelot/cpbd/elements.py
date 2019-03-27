@@ -26,7 +26,16 @@ class Element(object):
         self.dy = 0.
         self.dtilt = 0.
         self.params = {}
-    
+
+    def __str__(self):
+        s = "Element of type: " + str(self.__class__) + '\n'
+        s += "length: " + str(self.l) + '\n'
+        s += "angle: " + str(self.angle) + '\n'
+        s += "k1: " + str(self.k1) + '\n'
+        s += "dx: " + str(self.dx) + '\n'
+        s += "dy: " + str(self.dy) + '\n'
+        return s
+
     def __hash__(self):
         return hash(id(self))
         #return hash((self.id, self.__class__))
@@ -37,11 +46,11 @@ class Element(object):
             return id(self) == id(other)
         except:
             return False
-    
+
 
 # to mark locations of bpms and other diagnostics
 class Monitor(Element):
-        
+
     def __init__(self, l=0.0, eid=None):
         Element.__init__(self, eid)
         self.l = l
@@ -271,10 +280,10 @@ class Undulator(Element):
         self.Ky = Ky
         self.solver = "linear"  # can be "lin" is liear matrix,  "sym" - symplectic method and "rk" is Runge-Kutta
         self.phase = 0.  # phase between Bx and By + pi/4 (spiral undulator)
-        
+
         self.ax = -1              # width of undulator, when ax is negative undulator width is infinite
-                                  # I need it for analytic description of undulator 
-        
+                                  # I need it for analytic description of undulator
+
         self.field_file = field_file
         self.field_map = FieldMap(self.field_file)
         self.v_angle = 0.
@@ -282,10 +291,10 @@ class Undulator(Element):
         #self.processing()  # here we can check all data and here we can load magnetic map from file
                             # and if error will appear then it will be on stage of forming structure
                             # more over I suggest to store all data (including field map) in this class
-                            
+
     def validate(self):
         pass
-                            
+
         # maybe we will do two functions
         # 1. load data and check magnetic map
         # 2. check all input data (lperiod nperiod ...). domething like this we must do for all elements.
