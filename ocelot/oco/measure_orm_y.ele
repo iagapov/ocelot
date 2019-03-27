@@ -1,0 +1,50 @@
+! to run: elegant measure_orm_y.ele  -macro=lattice=p4_cor,cor_name=cxy01
+
+
+&global_settings
+    echo_namelists = 1,
+    log_file=out.log,
+&end
+
+&run_setup
+    lattice = "<lattice>.lte",
+    magnets = "<lattice>.mag",
+    p_central_mev = 6000.0,
+    use_beamline = RING,
+    default_order = 3,
+    echo_lattice=0,
+    parameters=orm_y_<cor_name>.param,
+&end
+
+! load_parameters interferes with alter_elements - need to exclude the K parameters from loading
+&load_parameters
+    filename_list = "perturb.param",
+		allow_missing_elements = 0,
+    change_defined_values = 0,
+&end
+
+&alter_elements name=<cor_name>, item=VKICK, value=1.e-3, differential=1, alter_at_each_step = 1, &end
+
+&run_control &end
+
+
+
+&twiss_output
+    filename = "%s.twi",
+    matched = 1,
+		output_at_each_step=1
+&end
+
+
+&closed_orbit
+        output = orm_y_<cor_name>.clo,
+        output_monitors_only=1,
+      	closed_orbit_accuracy = 1e-6,
+        closed_orbit_iterations = 100,
+        iteration_fraction = 0.7,
+        verbosity = 1,
+&end
+
+
+&bunched_beam &end
+&track center_on_orbit=1 &end

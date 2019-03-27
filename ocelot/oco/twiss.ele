@@ -1,0 +1,83 @@
+! to run: elegant twiss.ele  -macro=lattice=fodo
+
+
+&global_settings
+    echo_namelists = 1,
+    log_file=out.log,
+&end
+
+&run_setup
+    lattice = "<lattice>.lte",
+    magnets = "<lattice>.mag",
+    p_central_mev = 6000.0,
+    use_beamline = RING,
+    default_order = 2,
+    echo_lattice=1,
+    parameters=%s.param,
+&end
+
+&run_control &end
+
+&steering_element
+     plane=h,
+		 name=C*XY*,
+		 item=HKICK,
+		 tweek=1.e-6
+&end
+
+&steering_element
+     plane=V,
+		 name=C*XY*,
+		 item=VKICK,
+		 tweek=1.e-6
+&end
+
+&coupled_twiss_output
+	filename = "%s.ctwi",
+	output_at_each_step=1,
+&end
+
+&twiss_output
+  radiation_integrals=1,
+	filename = "%s.twi",
+	matched=1,
+	output_at_each_step=1,
+	compute_driving_terms=1,
+	higher_order_chromaticity=1,
+	higher_order_chromaticity_range = 2e-2,
+&end
+
+&correct
+        mode = orbit, method = global,
+        n_xy_cycles = 5,
+        n_iterations = 5,
+				prezero_correctors = 0,
+				use_perturbed_matrix = 0,
+        correction_fraction[0] = 2*0.5,
+				corrector_limit[0] = 1.e-2, 1.e-2
+        closed_orbit_accuracy = 1e-7,
+        closed_orbit_iterations = 1000,
+        closed_orbit_iteration_fraction = 0.5,
+				keep_largest_SVs[0] = 2*10,
+				trajectory_output = %s.orb,
+        statistics = %s.stat,
+				bpm_noise[0]=1.e-6, 1.e-6,
+&end
+
+&correction_matrix_output
+        response[0] = "%s.hrm","%s.vrm","%s.hvrm","%s.vhrm",
+        coupled = 1,
+&end
+
+&closed_orbit
+        output = %s.clo,
+        output_monitors_only=0,
+      	closed_orbit_accuracy = 1e-6,
+        closed_orbit_iterations = 100,
+        iteration_fraction = 0.7,
+        verbosity = 1,
+&end
+
+
+&bunched_beam &end
+&track &end

@@ -1,0 +1,75 @@
+
+B1H:  csbend, l = 1.3,  angle = 0.31415926535897932384626433832795
+QF: kquad, l=0.1, k1=1.7
+QD: kquad, l=0.1, k1=-2.0
+QS: kquad, l=0.1, tilt=0.7853981633974483, k1=0.0
+SF : ksext, l=0.01, k2=50.0
+DD: drift, l= 0.1
+CXY: kicker
+
+CXY01: kicker
+CXY02: kicker
+CXY03: kicker
+CXY04: kicker
+CXY05: kicker
+CXY06: kicker
+CXY07: kicker
+CXY08: kicker
+CXY09: kicker
+CXY10: kicker
+CXY11: kicker
+CXY12: kicker
+CXY13: kicker
+CXY14: kicker
+CXY15: kicker
+CXY16: kicker
+CXY17: kicker
+CXY18: kicker
+CXY19: kicker
+CXY20: kicker
+CXY21: kicker
+CXY22: kicker
+CXY23: kicker
+CXY24: kicker
+CXY25: kicker
+CXY26: kicker
+CXY27: kicker
+CXY28: kicker
+CXY29: kicker
+CXY30: kicker
+CXY31: kicker
+CXY32: kicker
+CXY33: kicker
+CXY34: kicker
+CXY35: kicker
+CXY36: kicker
+CXY37: kicker
+CXY38: kicker
+CXY39: kicker
+CXY40: kicker
+
+BPM: moni
+
+m0: mark
+
+cell: line = (B1H, CXY, DD, BPM, QF, DD, B1H, B1H, CXY, DD, BPM, QD, DD, B1H)
+ring: line = (B1H, CXY01, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY02, DD, BPM, QD, DD, B1H,&
+B1H, CXY03, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY04, DD, BPM, QD, DD, B1H,&
+B1H, CXY05, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY06, DD, BPM, QD, DD, B1H,&
+B1H, CXY07, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY08, DD, BPM, QD, DD, B1H,&
+B1H, CXY09, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY10, DD, BPM, QD, DD, B1H,&
+B1H, CXY11, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY12, DD, BPM, QD, DD, B1H,&
+B1H, CXY13, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY14, DD, BPM, QD, DD, B1H,&
+B1H, CXY15, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY16, DD, BPM, QD, DD, B1H,&
+B1H, CXY17, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY18, DD, BPM, QD, DD, B1H,&
+B1H, CXY19, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY20, DD, BPM, QD, DD, B1H,&
+B1H, CXY21, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY22, DD, BPM, QD, DD, B1H,&
+B1H, CXY23, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY24, DD, BPM, QD, DD, B1H,&
+B1H, CXY25, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY26, DD, BPM, QD, DD, B1H,&
+B1H, CXY27, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY28, DD, BPM, QD, DD, B1H,&
+B1H, CXY29, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY30, DD, BPM, QD, DD, B1H,&
+B1H, CXY31, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY32, DD, BPM, QD, DD, B1H,&
+B1H, CXY33, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY34, DD, BPM, QD, DD, B1H,&
+B1H, CXY35, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY36, DD, BPM, QD, DD, B1H,&
+B1H, CXY37, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY38, DD, BPM, QD, DD, B1H,&
+B1H, CXY39, DD, BPM, QF,SF,QS, DD, B1H, B1H, CXY40, DD, BPM, QD, DD, B1H, m0)
