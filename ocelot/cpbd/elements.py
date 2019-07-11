@@ -428,6 +428,19 @@ class Pulse:
         self.kick_y = lambda tau: 0.0
         self.kick_z = lambda tau: 0.0
 
+class PlasmaCell(Element):
+    """
+    plasma cell
+
+    l - length [m]
+    n0 - plasma density...
+    ...
+    """
+    def __init__(self, l=0., n0=0, eid=None):
+        Element.__init__(self, eid)
+        self.l = l
+        self.n0 = n0   # in cm^-3
+
 
 class UnknownElement(Element):
     """
